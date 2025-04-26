@@ -1,0 +1,112 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+
+const title = 'Blog | Noah Cantor';
+const description = 'Thoughts, tutorials, and insights from Noah Cantor on automation, recruitment, and technical topics';
+
+// This is a placeholder for now - we'll set up the content collections properly later
+// const posts = await getCollection('blog');
+const posts = [
+  {
+    slug: 'sample-post-1',
+    data: {
+      title: 'Automating Recruitment with Python',
+      description: 'How I built tools to streamline the candidate sourcing process',
+      pubDate: new Date('2025-01-15'),
+      tags: ['automation', 'python', 'recruitment']
+    }
+  },
+  {
+    slug: 'sample-post-2',
+    data: {
+      title: 'Building Resume Optimizers with NLP',
+      description: 'Using natural language processing to improve ATS compatibility',
+      pubDate: new Date('2025-02-20'),
+      tags: ['nlp', 'python', 'ats']
+    }
+  }
+];
+
+// Format date helper function
+function formatDate(date) {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(date);
+}
+---
+
+<MainLayout title={title} description={description}>
+  <section class="py-16 md:py-24 px-4">
+    <div class="container mx-auto max-w-4xl">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          <span class="lang-en">Blog</span>
+          <span class="lang-es hidden">Blog</span>
+        </h1>
+        <p class="text-lg max-w-2xl mx-auto lang-en">
+          Thoughts, tutorials, and insights on automation, recruitment, and technical topics.
+        </p>
+        <p class="text-lg max-w-2xl mx-auto lang-es hidden">
+          Pensamientos, tutoriales y perspectivas sobre automatización, reclutamiento y temas técnicos.
+        </p>
+      </div>
+      
+      {posts.length > 0 ? (
+        <div class="divide-y divide-gray-200 dark:divide-gray-700">
+          {posts.map((post) => (
+            <article class="py-10 space-y-2">
+              <div class="space-y-3">
+                <div>
+                  <h2 class="text-2xl font-bold leading-tight">
+                    <a href={`/blog/${post.slug}`} class="hover:text-primary">
+                      {post.data.title}
+                    </a>
+                  </h2>
+                  <dl>
+                    <dt class="sr-only">Published on</dt>
+                    <dd class="text-sm text-gray-500 dark:text-gray-400">
+                      <time dateTime={post.data.pubDate.toISOString()}>
+                        {formatDate(post.data.pubDate)}
+                      </time>
+                    </dd>
+                  </dl>
+                </div>
+                <div>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    {post.data.description}
+                  </p>
+                </div>
+                <div class="flex gap-2">
+                  {post.data.tags.map((tag) => (
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div>
+                  <a href={`/blog/${post.slug}`} class="text-primary hover:text-primary/80 inline-flex items-center">
+                    <span class="lang-en">Read more</span>
+                    <span class="lang-es hidden">Leer más</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-20">
+          <p class="text-xl text-gray-600 dark:text-gray-300">
+            <span class="lang-en">No posts yet. Check back soon!</span>
+            <span class="lang-es hidden">Aún no hay publicaciones. ¡Vuelve pronto!</span>
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+</MainLayout>

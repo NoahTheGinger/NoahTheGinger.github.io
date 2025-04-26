@@ -1,0 +1,65 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Trigger the workflow on push to main branch
+  push:
+    branches: [ main ]
+  # Allow manual triggering
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Run Lighthouse CI
+        id: lighthouse
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          runs: 1
+          configPath: './lighthouserc.json'
+          urls: |
+            ./dist/index.html
+            ./dist/projects/index.html
+            ./dist/timeline/index.html
+            ./dist/blog/index.html
+
+      - name: Check Lighthouse scores
+        if: always()
+        run: |
+          score=$(cat ${{ steps.lighthouse.outputs.manifest }} | jq -r '.performance')
+          if (( $(echo "$score < 90" | bc -l) )); then
+            echo "Lighthouse Performance score $score is less than 90"
+            exit 1
+          else
+            echo "Lighthouse Performance score $score is 90 or higher"
+          fi
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist
+
+      - name: Purge Cloudflare Cache
+        uses: jakejarvis/cloudflare-purge-action@master
+        env:
+          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+        if: ${{ env.CLOUDFLARE_ZONE && env.CLOUDFLARE_TOKEN }}

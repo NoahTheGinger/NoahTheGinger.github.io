@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #FF7A00;
+  --secondary-color: #2A2A2A;
+  --background-color: #F9F9F9;
+  --text-color: #2A2A2A;
+}
+
+html.dark {
+  --primary-color: #FF7A00;
+  --secondary-color: #F2F2F2;
+  --background-color: #121212;
+  --text-color: #F2F2F2;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--primary-color) 0%, #FFA840 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.primary-btn {
+  @apply bg-primary text-white px-4 py-2 rounded-md hover:opacity-90 transition-all;
+}
+
+.secondary-btn {
+  @apply border-2 border-primary text-primary px-4 py-2 rounded-md hover:bg-primary hover:text-white transition-all;
+}

@@ -1,0 +1,47 @@
+{
+  "name": "noah-cantor-portfolio",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Noah Cantor's personal portfolio website featuring projects, timeline, and blog",
+  "author": "Noah Cantor",
+  "homepage": "https://noahtheginger.me",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NoahTheGinger/NoahTheGinger.github.io"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "astro build && gh-pages -d dist",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.2.5",
+    "@astrojs/partytown": "^2.1.4",
+    "@astrojs/sitemap": "^3.3.1",
+    "@astrojs/tailwind": "^6.0.2",
+    "@types/node": "^22.15.2",
+    "astro": "^5.7.5",
+    "astro-icon": "^1.1.5",
+    "autoprefixer": "^10.4.21",
+    "axios": "^1.9.0",
+    "i18next": "^25.0.1",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "timelinejs3": "^3.4.0",
+    "typewriter-effect": "^2.21.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  },
+  "keywords": [
+    "portfolio",
+    "resume",
+    "personal-website",
+    "noah-cantor",
+    "astro",
+    "tailwindcss"
+  ]
+}
