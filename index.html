@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>o3 Jailbreak Techniques - May 2025</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css)">
+    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap)" rel="stylesheet">
+    <script src="[https://cdn.jsdelivr.net/npm/chart.js](https://cdn.jsdelivr.net/npm/chart.js)"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Advanced Jailbreak Techniques for OpenAI's o3</h1>
+            <p class="subtitle">A comprehensive analysis of techniques targeting the frontier reasoning model</p>
+            <div class="last-updated">Last updated: May 18, 2025</div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#techniques">Techniques</a></li>
+                <li><a href="#architecture">o3 Architecture</a></li>
+                <li><a href="#patterns">Attack Patterns</a></li>
+                <li><a href="#recommendations">Recommendations</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="overview">
+            <h2>Overview</h2>
+            <p>OpenAI's o3 reasoning model represents a significant advancement in AI safety and reasoning capabilities, making it one of the most challenging models to jailbreak. This interactive resource compiles the most recent and effective jailbreak techniques specifically targeting o3 and similar advanced reasoning models as of May 2025.</p>
+            
+            <div class="dashboard">
+                <div class="dashboard-card">
+                    <div class="dashboard-number">10</div>
+                    <div class="dashboard-label">Jailbreak Techniques</div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-number">98%</div>
+                    <div class="dashboard-label">Highest Success Rate</div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-number">5</div>
+                    <div class="dashboard-label">Attack Categories</div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-number">6</div>
+                    <div class="dashboard-label">Public Implementations</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Attack Success Rates</h3>
+                <canvas id="successRateChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3>Techniques by Category</h3>
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </section>
+
+        <section id="techniques">
+            <h2>Jailbreak Techniques</h2>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="category-filter">Filter by Category:</label>
+                    <select id="category-filter">
+                        <option value="all">All Categories</option>
+                        <option value="Reasoning Process Manipulation">Reasoning Process Manipulation</option>
+                        <option value="Text Transformation">Text Transformation</option>
+                        <option value="Context Manipulation">Context Manipulation</option>
+                        <option value="Multi-Turn Approaches">Multi-Turn Approaches</option>
+                        <option value="Adversarial Triggers">Adversarial Triggers</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="sort-by">Sort by:</label>
+                    <select id="sort-by">
+                        <option value="date-desc">Date (Newest First)</option>
+                        <option value="date-asc">Date (Oldest First)</option>
+                        <option value="effectiveness-desc">Effectiveness (Highest First)</option>
+                        <option value="name-asc">Name (A-Z)</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="search">Search:</label>
+                    <input type="text" id="search" placeholder="Search techniques...">
+                </div>
+            </div>
+
+            <div class="techniques-grid" id="techniques-container">
+                </div>
+        </section>
+
+        <section id="architecture">
+            <h2>o3 Architecture and Vulnerabilities</h2>
+            
+            <div class="architecture-container">
+                <div class="architecture-column">
+                    <h3>Security Strengths</h3>
+                    <div class="architecture-card">
+                        <div class="architecture-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="architecture-content">
+                            <h4>Deliberative Alignment</h4>
+                            <p>o3 uses deliberative alignment, which teaches the model to explicitly reason through safety specifications before producing answers</p>
+                        </div>
+                    </div>
+                    <div class="architecture-card">
+                        <div class="architecture-icon"><i class="fas fa-brain"></i></div>
+                        <div class="architecture-content">
+                            <h4>Chain of Thought Reasoning</h4>
+                            <p>Trained with large-scale reinforcement learning on chains of thought, allowing it to refine thinking processes and recognize mistakes</p>
+                        </div>
+                    </div>
+                    <div class="architecture-card">
+                        <div class="architecture-icon"><i class="fas fa-layer-group"></i></div>
+                        <div class="architecture-content">
+                            <h4>Instruction Hierarchy</h4>
+                            <p>Follows a three-tier instruction hierarchy (system messages > developer messages > user messages) to prevent circumvention of guardrails</p>
+                        </div>
+                    </div>
+                    <div class="architecture-card">
+                        <div class="architecture-icon"><i class="fas fa-user-shield"></i></div>
+                        <div class="architecture-content">
+                            <h4>Safety-Focused Reasoning Monitor</h4>
+                            <p>Implements a safety-focused reasoning monitor that can block model responses for harmful content</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="architecture-column">
+                    <h3>Security Vulnerabilities</h3>
+                    <div class="architecture-card">
+                        <div class="architecture-icon"><i class="fas fa-bug"></i></div>
+                        <div class="architecture-content">
+                            <h4>Exposed Reasoning Process</h4>
+                            <p>By showing intermediate reasoning steps, the model inadvertently reveals its safety mechanisms, creating attack vectors</p>
+                        </div>
+                    </div>
+                    <div class="architecture-card">
+                        <div class="architecture-icon"><i class="fas fa-cogs"></i></div>
+                        <div class="architecture-content">
+                            <h4>Reasoning Token Management</h4>
+                            <p>The model's use of special tokens to transition between reasoning and final answers creates potential for token overflow attacks</p>
+                        </div>
+                    </div>
+                    <div class="architecture-card">
+                        <div class="architecture-icon"><i class="fas fa-exchange-alt"></i></div>
+                        <div class="architecture-content">
+                            <h4>Left-to-Right Processing</h4>
+                            <p>Like other LLMs, o3 processes text from left to right, creating vulnerability to techniques that manipulate this directionality</p>
+                        </div>
+                    </div>
+                    <div class="architecture-card">
+                        <div class="architecture-icon"><i class="fas fa-history"></i></div>
+                        <div class="architecture-content">
+                            <h4>Client-Supplied Conversation History</h4>
+                            <p>If the model relies on client-supplied conversation history, it may be vulnerable to context manipulation attacks</p>
+                        </div>
+                    </div>
+                     <div class="architecture-card">
+                        <div class="architecture-icon"><i class="fas fa-puzzle-piece"></i></div>
+                        <div class="architecture-content">
+                            <h4>Generalization Gaps</h4>
+                            <p>The model shows vulnerability to simple reformulations like past tense jailbreaks, indicating gaps in its safety training</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="patterns">
+            <h2>Common Attack Patterns</h2>
+            <div class="pattern-card">
+                <h4><i class="fas fa-lightbulb"></i> Reasoning Process Manipulation</h4>
+                <p>Many successful attacks target the model's reasoning process rather than attempting to directly override safety checks.</p>
+            </div>
+            <div class="pattern-card">
+                <h4><i class="fas fa-comments"></i> Multi-Turn Approaches</h4>
+                <p>Techniques like FITD and X-Teaming demonstrate that gradual escalation across multiple turns can be highly effective.</p>
+            </div>
+            <div class="pattern-card">
+                <h4><i class="fas fa-user-secret"></i> Indirect Attacks</h4>
+                <p>Rather than directly requesting harmful content, the most successful attacks use misdirection, context manipulation, or formatting tricks.</p>
+            </div>
+            <div class="pattern-card">
+                <h4><i class="fas fa-exchange-alt"></i> Proxy Model Development</h4>
+                <p>Several techniques use weaker, less expensive models to develop attacks that transfer to more robust models like o3.</p>
+            </div>
+        </section>
+
+        <section id="recommendations">
+            <h2>Recommendations for Red-Team Researchers</h2>
+            <div class="recommendation-card">
+                <h4><i class="fas fa-bullseye"></i> Focus on Reasoning Process</h4>
+                <p>Target the model's reasoning process rather than attempting to directly override safety checks.</p>
+            </div>
+            <div class="recommendation-card">
+                <h4><i class="fas fa-key"></i> Explore Token Management</h4>
+                <p>Investigate how the model manages transitions between reasoning and final answers.</p>
+            </div>
+            <div class="recommendation-card">
+                <h4><i class="fas fa-project-diagram"></i> Combine Techniques</h4>
+                <p>The most effective approaches may combine elements from multiple techniques (e.g., reasoning manipulation with multi-turn escalation).</p>
+            </div>
+            <div class="recommendation-card">
+                <h4><i class="fas fa-robot"></i> Leverage Proxy Models</h4>
+                <p>Use less expensive models to develop and refine attacks before testing on o3.</p>
+            </div>
+            <div class="recommendation-card">
+                <h4><i class="fas fa-search"></i> Explore Architectural Vulnerabilities</h4>
+                <p>Focus on specific architectural features like client-supplied conversation history or left-to-right processing.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 o3 Jailbreak Analysis. All information presented is for research and educational purposes only.</p>
+            <p>This website and its content are based on publicly available research and are not affiliated with or endorsed by OpenAI.</p>
+        </div>
+    </footer>
+
+    <script src="js/jailbreak_data.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
